@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from  django.contrib import messages
 
 
 from .forms import cadastrocriar
@@ -12,7 +13,7 @@ def contate(request):
     form = cadastrocriar(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect(home)
+        messages.success(request, 'Mensagem enviada com sucesso!')
     return render(request, 'contate-nos.html',{'form':form})
 
 
